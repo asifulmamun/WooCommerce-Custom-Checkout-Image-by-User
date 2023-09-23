@@ -4,7 +4,7 @@ header('Content-Type: application/json');
 require_once('../../../wp-load.php'); // Adjust the path as needed
 
 // Check the image uploaded or not
-if(!isset($_FILES['custom_image'])):
+if(!isset($_FILES['wcibu_customImg'])):
     $response = [
         'message' => 'No image uploaded.'
     ];
@@ -12,7 +12,7 @@ if(!isset($_FILES['custom_image'])):
 
 else:
 // If uploaded image
-    $uploaded_image = $_FILES['custom_image'];
+    $uploaded_image = $_FILES['wcibu_customImg'];
    
     $response = [
         'message' => $uploaded_image

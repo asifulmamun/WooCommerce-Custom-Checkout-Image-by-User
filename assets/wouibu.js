@@ -1,7 +1,7 @@
 // console.log('Hello WCIBU');
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('wcibu_upload').addEventListener('click', function(event) {
+    document.getElementById('wcibu_uploadBtn').addEventListener('click', function(event) {
         event.preventDefault(); // Prevent default form submission
         uploadImage(); // Call your custom upload function
     });
@@ -11,11 +11,11 @@ function uploadImage() {
     // console.log('Le Halua');
 
 
-    var fileInput = document.getElementById('custom_image');
+    var fileInput = document.getElementById('wcibu_customImg');
     var file = fileInput.files[0];
     
     var formData = new FormData();
-    formData.append('custom_image', file);
+    formData.append('wcibu_customImg', file);
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/wp-content/plugins/woo_checkout_imgur_by_user/upload.php', true);

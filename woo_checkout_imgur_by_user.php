@@ -18,8 +18,8 @@ function add_image_upload_field_to_checkout() {
 ?>
     <div id="custom_image_upload_field">
     <h3>Upload Image</h3>
-    <input type="file" name="custom_image" id="custom_image" class="form-row-wide" required>
-    <button id="wcibu_upload">Upload</button>
+    <input type="file" name="custom_image" id="wcibu_customImg" class="form-row-wide" required>
+    <button id="wcibu_uploadBtn">Upload</button>
 </div>
     
 <?php
