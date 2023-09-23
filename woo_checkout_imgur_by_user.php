@@ -16,12 +16,13 @@ function add_image_upload_field_to_checkout() {
     //     'required' => true,
     // ), WC()->checkout->get_value('custom_image'));
 ?>
-    <div id="custom_image_upload_field">
-    <h3>Upload Image</h3>
-    <input type="file" name="custom_image" id="wcibu_customImg" class="form-row-wide" required>
-    <button id="wcibu_uploadBtn">Upload</button>
-</div>
-    
+
+    <div id="wcibu_wrapper">
+        <h3>Upload Image</h3>
+        <input type="file" name="custom_image" id="wcibu_customImg" class="form-row-wide" required>
+        <button id="wcibu_uploadBtn">Upload</button>
+    </div>
+
 <?php
 }
 add_action('woocommerce_checkout_before_customer_details', 'add_image_upload_field_to_checkout');
