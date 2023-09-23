@@ -42,7 +42,8 @@ else:
         
         // Response Success with image url
         $response = [
-            'message' => 'Success uploading image ' . $image_url
+            'message' => 'Success uploading image',
+            'url' =>  $image_url
         ];
     
     } else {

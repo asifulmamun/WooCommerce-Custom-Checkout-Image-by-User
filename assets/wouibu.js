@@ -23,7 +23,7 @@ function uploadImage() {
     xhr.onload = function() {
         if (xhr.status === 200) {
             var response = JSON.parse(xhr.responseText); // Parse the JSON response
-            console.log(response.message);
+            console.log(response.url);
         } else {
             console.error('Error uploading image.');
         }

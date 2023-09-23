@@ -8,7 +8,6 @@ Author: AL MAMUN
 
 // Adding Image Upload Field to Checkout Page
 function add_image_upload_field_to_checkout() {
-    echo '<div id="custom_image_upload_field"><h3>' . __('Upload Image') . '</h3>';
     // woocommerce_form_field('custom_image', array(
     //     'type' => 'file',
     //     'class' => array('form-row-wide'),
@@ -16,12 +15,14 @@ function add_image_upload_field_to_checkout() {
     //     'placeholder' => __('Choose an image'),
     //     'required' => true,
     // ), WC()->checkout->get_value('custom_image'));
-
-    echo '<input type="file" name="custom_image" id="custom_image" class="form-row-wide" required>';
-    echo '<button id="wcibu_upload">Upload</button>';
-
-    echo '</div>';
-
+?>
+    <div id="custom_image_upload_field">
+    <h3>Upload Image</h3>
+    <input type="file" name="custom_image" id="custom_image" class="form-row-wide" required>
+    <button id="wcibu_upload">Upload</button>
+</div>
+    
+<?php
 }
 add_action('woocommerce_checkout_before_customer_details', 'add_image_upload_field_to_checkout');
 
