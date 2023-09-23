@@ -2,8 +2,8 @@
 /*
 Plugin Name: Woo Checkout Imgur by User
 Description: Allow users to upload images during checkout and store them on Imgur.
-Version: 1.0
-Author: Your Name
+Version: 1.1.0
+Author: AL MAMUN
 */
 
 // Adding Image Upload Field to Checkout Page

@@ -1,4 +1,4 @@
-console.log('Hello WCIBU');
+// console.log('Hello WCIBU');
 
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('wcibu_upload').addEventListener('click', function(event) {

@@ -24,14 +24,17 @@ else:
         
         $upload_dir = wp_upload_dir();
         
-        $target_path = $upload_dir['path'] . '/' . basename($uploaded_image['name']);
+
+        $_renameFile = date('d-m-Y') . '_' . rand(1,100) . "_" . str_replace(" ", "_", basename($uploaded_image['name']));
+
+        $target_path = $upload_dir['path'] . '/' . $_renameFile;
         move_uploaded_file($uploaded_image['tmp_name'], $target_path);
 
         // Additional processing can be done here
         // For example, you can save the image URL in the order meta or perform other operations
 
         $response = [
-            'message' => 'Success uploading image'
+            'message' => 'Success uploading image ' . $target_path
         ];
         
     } else {
