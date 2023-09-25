@@ -3,14 +3,22 @@ header('Content-Type: application/json');
 
 require_once('../../../../wp-load.php'); // Adjust the path as needed
 
+// Get FILES from FORM
+$getFiles = isset($_FILES['wcibu_customImg']) ? $_FILES['wcibu_customImg'] : null;
+
+
+
+// Image Uploader
 class ImageUploader {
     private $uploadedImage;
     private $allowed_types;
+    private $max_size;
+    
 
-
-    public function __construct() {
-        $this->uploadedImage = isset($_FILES['wcibu_customImg']) ? $_FILES['wcibu_customImg'] : null;
-        $this->allowed_types = ['image/jpeg', 'image/png']; // Allowd Type JPG/PNG
+    public function __construct($files) {
+        $this->uploadedImage = $files;
+        $this->allowed_types = ['image/jpeg', 'image/JPEG', 'image/png', 'image/PNG', 'image/JPG', 'image/jpg']; // Allowd Type JPG/PNG
+        $this->max_size = 1 * 1024 * 1024; // 1MB in bytes
 
     }
 
@@ -24,7 +32,14 @@ class ImageUploader {
         // Check if it's a valid image type (JPG or PNG)
         elseif (!in_array($this->uploadedImage['type'], $this->allowed_types)) {
             return [
-                'message' => 'Invalid image type. Please upload a JPG or PNG file.',
+                'message' => 'Invalid image type. Please upload a JPG or PNG file. ',
+                'url' => ''
+            ];
+        }
+        // Check the image size
+        elseif ($this->uploadedImage['size'] > $this->max_size) {
+            return [
+                'message' => 'File size exceeds the maximum limit of 1MB.',
                 'url' => ''
             ];
         }
@@ -69,7 +84,13 @@ class ImageUploader {
     }
 }
 
-$imageUploader = new ImageUploader();
+
+
+// Image Upload or not
+$imageUploader = new ImageUploader($getFiles);
 $response = $imageUploader->processImage();
 
+
+
+// Return Result
 echo json_encode($response);
