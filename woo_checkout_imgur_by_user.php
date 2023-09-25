@@ -11,37 +11,18 @@ function add_image_upload_field_to_checkout() {
 ?>
 
     <div id="wcibu_wrapper">
-        <h3>Upload Image</h3>
-        <input type="file" name="custom_image" id="wcibu_customImg" required>
-        <button id="wcibu_uploadBtn">Upload</button>
+        <div id="wcibu_wrapped">
+            <h3>Upload Image</h3>
+            <input type="file" name="custom_image" id="wcibu_customImg" required>
+            <button id="wcibu_uploadBtn">Upload</button>
+        </div>
+
+        <!-- Result -->
+        <div id="wcibu_msg"></div>
+        <div id="wcibu_res_img"></div>
+
     </div>
 
-
- <!-- <div id="container">
-	<div>
-		<div class="upload" v-for="(upload, index) in uploads" :key="index">
-			<div class="ext" :style="{'background-color': upload.color}">
-				<p>{{upload.ext.toUpperCase()}}</p>
-			</div>
-			<div class="upload-details">
-				<div class="name-container">
-					<p class="filename">{{upload.name}}</p>
-					<div>
-						<p class="filesize">{{upload.size}}</p>
-						<p @click="removeUpload(index)" class="cancel-btn" v-if="upload.progress !== '100%'">x</p>
-					</div>
-				</div>
-				<div class="upload-bar" v-if="upload.progress !== '100%'">
-					<div class="upload-progress" :style="{width: upload.progress}"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div @click="openFilePicker" id="uploader">
-		<p><span>Click</span> to choose a file to upload :)</p>
-		<input type="file" ref="filepicker" @change="uploadFile" />
-	</div>
-</div> -->
 
 <?php
 }
@@ -64,10 +45,11 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_styles');
 // JS file
 function enqueue_custom_script() {
     if (is_checkout() && !is_wc_endpoint_url()) {
-        wp_enqueue_script('custom-script', plugin_dir_url(__FILE__) . 'assets/wcibu.js');
+
+        wp_enqueue_script('wcibu-script', plugin_dir_url(__FILE__) . 'assets/wcibu.js');
 
         // Send URL
-        wp_localize_script('custom-script', 'staticData', array(
+        wp_localize_script('wcibu-script', 'staticData', array(
             'pluginDir' => plugin_dir_url(__FILE__),
         ));
 

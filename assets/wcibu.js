@@ -26,12 +26,24 @@ class WCIBU {
             if (xhr.status === 200) {
                 const response = JSON.parse(xhr.responseText); // Parse the JSON response
 
+                const wcibu_wrapped = document.getElementById('wcibu_wrapped');
+                const wcibu_msg = document.getElementById('wcibu_msg');
+                const wcibu_res_img = document.getElementById('wcibu_res_img');
+
                 if(response.url == ""){
-                    console.log(response.message);
+                    // console.log(response.message);
+                    wcibu_msg.innerText = response.message;
+                    wcibu_msg.classList.add('wcibu_msg_err');
 
                 } else{
 
-                    console.log(response.url);
+                    // console.log(response.url);
+                    wcibu_msg.innerText = response.message;
+                    wcibu_msg.classList.add('wcibu_msg_suc');
+                    wcibu_res_img.innerHTML = '<a title="Click here to for view" target="_blank" href="'+ response.url +'"><img class="wcibu_res_img" src="'+ response.url +'"></a>';
+                    wcibu_wrapped.style.display = 'none';
+                    
+
                     
                     // Change DOM
                     this.afterUploaded(response.url);
