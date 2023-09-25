@@ -45,8 +45,9 @@ class WCIBU {
                     
 
                     
-                    // Change DOM
-                    this.afterUploaded(response.url);
+                     // Save URL to WooCommerce order
+                    this.saveUrlToOrder(response.url); // Pass the URL as an argument
+
                 }
 
             } else {
@@ -57,8 +58,15 @@ class WCIBU {
         xhr.send(formData);
     }
 
-    afterUploaded(url) {
-        // Modify DOM after upload
+    // Save URL
+    saveUrlToOrder(url) {
+        const wcibu_DATA_SAVE_TO_DB = document.getElementById('wcibu_DATA_SAVE_TO_DB');
+
+        const imageUrlInput = document.createElement('input');
+        imageUrlInput.type = 'hidden';
+        imageUrlInput.name = 'uploaded_image_url';
+        imageUrlInput.value = url; // Use the passed URL
+        wcibu_DATA_SAVE_TO_DB.appendChild(imageUrlInput);
     }
 }
 
