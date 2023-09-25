@@ -8,20 +8,11 @@ Author: AL MAMUN
 
 // Adding Image Upload Field to Checkout Page
 function add_image_upload_field_to_checkout() {
-    // woocommerce_form_field('custom_image', array(
-    //     'type' => 'file',
-    //     'class' => array('form-row-wide'),
-    //     'label' => __('Image Upload'),
-    //     'placeholder' => __('Choose an image'),
-    //     'required' => true,
-    // ), WC()->checkout->get_value('custom_image'));
 ?>
 
     <div id="wcibu_wrapper">
         <h3>Upload Image</h3>
-        <label for="images" class="drop-container" id="dropcontainer">
-            <input type="file" name="custom_image" id="wcibu_customImg" required>
-        </label>
+        <input type="file" name="custom_image" id="wcibu_customImg" required>
         <button id="wcibu_uploadBtn">Upload</button>
     </div>
 
