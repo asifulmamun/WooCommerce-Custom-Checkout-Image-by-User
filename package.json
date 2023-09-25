@@ -1,0 +1,32 @@
+{
+  "name": "wcibu",
+  "version": "1.0.0",
+  "description": "Allow users to upload images during checkout and store to own server or Imgur.",
+  "main": "./assets/wcibu.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asifulmamun/wcibu.git"
+  },
+  "keywords": [
+    "wcibu",
+    "woocommerce",
+    "image",
+    "upload",
+    "wc",
+    "img",
+    "upload",
+    "wc",
+    "custom",
+    "img",
+    "order"
+  ],
+  "author": "Al Mamun - asifulmamun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asifulmamun/wcibu/issues"
+  },
+  "homepage": "https://github.com/asifulmamun/wcibu#readme"
+}

@@ -1,24 +1,18 @@
 <?php
 header('Content-Type: application/json');
 
-require_once('../../../wp-load.php'); // Adjust the path as needed
+require_once('../../../../wp-load.php'); // Adjust the path as needed
 
 // Check the image uploaded or not
 if(!isset($_FILES['wcibu_customImg'])):
     $response = [
-        'message' => 'No image uploaded.'
+        'message' => 'No image uploaded.',
+        'url' => 'No image uploaded.'
     ];
-
-
 else:
 // If uploaded image
     $uploaded_image = $_FILES['wcibu_customImg'];
    
-    $response = [
-        'message' => $uploaded_image
-    ];
-
-    
     
     if ($uploaded_image && $uploaded_image['size'] > 0) {
         
@@ -49,7 +43,8 @@ else:
     } else {
         // If no image found
         $response = [
-            'message' => 'Error uploading image.'
+            'message' => 'Error uploading image.',
+            'url' => 'Error uploading image.'
         ];
         
     }

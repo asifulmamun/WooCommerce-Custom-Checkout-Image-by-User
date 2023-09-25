@@ -1,4 +1,5 @@
 // console.log('Hello WCIBU');
+// console.log(staticData.pluginDir);
 
 // Action Buttton
 document.addEventListener('DOMContentLoaded', function() {
@@ -19,7 +20,7 @@ function uploadImage() {
     formData.append('wcibu_customImg', file);
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/wp-content/plugins/woo_checkout_imgur_by_user/upload.php', true);
+    xhr.open('POST', '/wp-content/plugins/woo_checkout_imgur_by_user/includes/process.php', true);
 
     xhr.onload = function() {
         if (xhr.status === 200) {
