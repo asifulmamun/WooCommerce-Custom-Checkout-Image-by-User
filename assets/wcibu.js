@@ -46,7 +46,7 @@ class WCIBU {
 
                     
                      // Save URL to WooCommerce order
-                    this.saveUrlToOrder(response.url); // Pass the URL as an argument
+                     this.saveUrlToOrder(response.url);
 
                 }
 
@@ -65,7 +65,7 @@ class WCIBU {
         const imageUrlInput = document.createElement('input');
         imageUrlInput.type = 'hidden';
         imageUrlInput.name = 'uploaded_image_url';
-        imageUrlInput.value = url; // Use the passed URL
+        imageUrlInput.value = url;
         wcibu_DATA_SAVE_TO_DB.appendChild(imageUrlInput);
     }
 }
