@@ -16,3 +16,6 @@ require_once(plugin_dir_path(__FILE__) . 'includes/uploaded_files_save.php');
 // View Files in Order Page - Users
 require_once(plugin_dir_path(__FILE__) . 'includes/order_page_view.php');
 
+// View File in Order Page from Dashboard
+require_once(plugin_dir_path(__FILE__) . 'includes/order_page_view_dashboard.php');
+
