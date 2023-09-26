@@ -20,7 +20,7 @@ class WCIBU {
         formData.append('wcibu_customImg', file);
 
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', `${this.pluginDir}/includes/process.php`, true);
+        xhr.open('POST', `${this.pluginDir}process.php`, true);
 
         xhr.onload = () => {
             if (xhr.status === 200) {
