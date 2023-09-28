@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Woo Checkout Image by User
+Plugin Name: Custom Checkout Image by User
 Description: Allow users to upload images during checkout and store to own server.
 Version: 1.1.0
 Author: AL MAMUN
