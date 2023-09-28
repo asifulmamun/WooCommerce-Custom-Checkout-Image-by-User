@@ -1,62 +1,65 @@
 <?php
 /*
-Plugin Name: Woo Checkout Imgur by User
-Description: Allow users to upload images during checkout and store to own server or Imgur.
+Plugin Name: Woo Checkout Image by User
+Description: Allow users to upload images during checkout and store to own server.
 Version: 1.1.0
 Author: AL MAMUN
+Plugin URI: https://github.com/asifulmamun/wcibu
+Author URI: https://asifulmamun.info.bd
 */
 
 
-// // Upload Image
-// require_once(plugin_dir_path(__FILE__) . 'includes/upload_image.php');
+// TGM - Plugin for required / depencies
+require_once(plugin_dir_path(__FILE__) . 'includes/class-tgm-plugin-activation.php');
+function wcibu_register_required_plugins() {
+    $plugins = array(
+        array(
+            'name' => 'WooCommerce',
+            'slug' => 'woocommerce',
+            'required' => true,
+        ),
+    );
 
-// // Uploaded Files SAVE to DB
-// require_once(plugin_dir_path(__FILE__) . 'includes/uploaded_files_save.php');
+    $config = array(
+        'id' => 'wcibu-tgmpa',
+        'default_path' => '',
+        'menu' => 'tgmpa-install-plugins',
+        'has_notices' => true,
+        'dismissable' => true,
+        'dismiss_msg' => '',
+        'is_automatic' => true,
+        'message' => '',
+        'strings' => array(
+            'page_title' => __('Install Required Plugins', 'wcibu'),
+            'menu_title' => __('Install Plugins', 'wcibu'),
+            'installing' => __('Installing Plugin: %s', 'wcibu'),
+            // Customize other strings as needed
+        ),
+    );
 
-// // View Files in Order Page - Users
-// require_once(plugin_dir_path(__FILE__) . 'includes/order_page_view.php');
-
-// // View File in Order Page from Dashboard
-// require_once(plugin_dir_path(__FILE__) . 'includes/order_page_view_dashboard.php');
+    tgmpa($plugins, $config);
+}
+add_action('tgmpa_register', 'wcibu_register_required_plugins');
 
 
 
-add_action('admin_init', 'check_woocommerce_activation');
-
+// Main
 function check_woocommerce_activation() {
-    if (class_exists('WooCommerce')) {
-        if (is_plugin_active('woocommerce/woocommerce.php')) {
-            // WooCommerce is active, proceed with your plugin logic
-            require_once(plugin_dir_path(__FILE__) . 'includes/upload_image.php');
-            require_once(plugin_dir_path(__FILE__) . 'includes/uploaded_files_save.php');
-            require_once(plugin_dir_path(__FILE__) . 'includes/order_page_view.php');
-            require_once(plugin_dir_path(__FILE__) . 'includes/order_page_view_dashboard.php');
-            // require_once(plugin_dir_path(__FILE__) . 'inc/tgm.php');
-        } else {
-            // WooCommerce is installed but not active, show a message to activate it
-            add_action('admin_notices', 'my_plugin_woocomm_not_activated_message');
-        }
-    } else {
-        // WooCommerce is not installed, show a message with an installation button
-        add_action('admin_notices', 'my_plugin_woocomm_not_installed_message');
+    if(is_plugin_active('woocommerce/woocommerce.php')) {
+
+        // Upload Image
+        require_once(plugin_dir_path(__FILE__) . 'includes/upload_image.php');
+
+        // Uploaded Files SAVE to DB
+        require_once(plugin_dir_path(__FILE__) . 'includes/uploaded_files_save.php');
+
+        // View Files in Order Page - Users
+        require_once(plugin_dir_path(__FILE__) . 'includes/order_page_view.php');
+
+        // View File in Order Page from Dashboard
+        require_once(plugin_dir_path(__FILE__) . 'includes/order_page_view_dashboard.php');
+
     }
-}
 
-function my_plugin_woocomm_not_installed_message() {
-    // Check if WooCommerce is not already installed
-    if (!is_plugin_active('woocommerce/woocommerce.php')) {
-        echo '<div class="notice notice-error is-dismissible"><p>';
-        echo 'WooCommerce is not installed. <a href="' . admin_url('plugin-install.php?s=woocommerce&tab=search&type=term') . '">Click here to install WooCommerce</a>.';
-        echo '</p></div>';
-    }
-}
-
-function my_plugin_woocomm_not_activated_message() {
-    echo '<div class="notice notice-error is-dismissible"><p>';
-    echo 'WooCommerce is installed but not activated. <a href="' . admin_url('plugins.php') . '">Click here to activate WooCommerce</a>.';
-    echo '</p></div>';
-}
-
-
-
-
+} // check_woocommerce_activation()
+add_action('admin_init', 'check_woocommerce_activation');

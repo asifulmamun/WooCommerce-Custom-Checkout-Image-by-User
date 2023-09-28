@@ -1,0 +1,2 @@
+### Credit
+http://tgmpluginactivation.com/
