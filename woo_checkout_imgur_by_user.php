@@ -66,4 +66,4 @@ function check_woocommerce_activation() {
     }
 
 } // check_woocommerce_activation()
-add_action('admin_init', 'check_woocommerce_activation');
+add_action('init', 'check_woocommerce_activation');

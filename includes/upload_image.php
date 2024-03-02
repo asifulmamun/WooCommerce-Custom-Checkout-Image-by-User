@@ -32,7 +32,7 @@ function add_image_upload_field_to_checkout() {
         <div id="wcibu_wrapped">
             <h3>Upload Image</h3>
             <input type="file" name="custom_image" id="wcibu_customImg" required>
-            <button id="wcibu_uploadBtn">Upload</button>
+            <button id="wcibu_uploadBtn" class="button">Upload</button>
         </div>
 
         <!-- Result -->
